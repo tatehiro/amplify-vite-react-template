@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
+import {Authenticator} from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+import { signOut } from "aws-amplify/auth";
 
 const client = generateClient<Schema>();
 
@@ -40,6 +43,13 @@ function App() {
           Review next step of this tutorial.
         </a>
       </div>
+      <Authenticator>
+        {({signOut}) => (
+          <main>
+            <button onClick={signOut}>Sign Out</button>
+          </main>
+        )}
+      </Authenticator>
     </main>
   );
 }

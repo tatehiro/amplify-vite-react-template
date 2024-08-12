@@ -43,8 +43,9 @@ function App() {
         </a>
       </div>
       <Authenticator>
-        {({signOut}) => (
+        {({signOut, user}) => (
           <main>
+            <h1>{user?.signInDetails?.loginId}'s todos</h1>
             <button onClick={signOut}>Sign Out</button>
           </main>
         )}
